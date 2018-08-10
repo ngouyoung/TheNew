@@ -36,17 +36,17 @@
                         </li>
                         <li>
                             <a href="#">
-                                AddNew
+                                Add New
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('admin/category') }}">
+                                Categories
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                Category
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Store
+                                Stores
                             </a>
                         </li>
                     </ul>

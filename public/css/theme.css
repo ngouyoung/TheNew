@@ -308,7 +308,7 @@ section {
 }
 
 .main-content {
-    padding-top: 116px;
+    padding-top: 110px;
     min-height: 100vh;
     background-color: white;
 }
@@ -480,11 +480,11 @@ section {
 }
 
 .au-btn--green {
-    background: #63c76a;
+    background: #65c631;
 }
 
 .au-btn--green:hover {
-    background: #59bd60;
+    background: #74df34;
 }
 
 .au-btn-plus {
@@ -3093,6 +3093,23 @@ section {
     -ms-flex-align: center;
     align-items: center;
 }
+.category-wrap{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
 
 @media (max-width: 767px) {
     .overview-wrap {
@@ -3114,6 +3131,33 @@ section {
     }
 
     .overview-wrap h2 {
+        -webkit-box-ordinal-group: 3;
+        -webkit-order: 2;
+        -moz-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+    }
+}
+@media (max-width: 767px) {
+    .category-wrap-wrap {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .category-wrap .button {
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+
+    .category-wrap h2 {
         -webkit-box-ordinal-group: 3;
         -webkit-order: 2;
         -moz-box-ordinal-group: 3;
@@ -3254,7 +3298,7 @@ section {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background: #fff;
+    background: #dadada;
     overflow: hidden;
 }
 
@@ -14638,4 +14682,12 @@ section {
 
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
+}
+
+/*Add New Categories*/
+.addnew-category{
+    font-weight: bold;
+    border: 1px solid grey;
+    height: 45px;
+    padding: 12px 0 12px 10px;
 }

@@ -54,18 +54,7 @@
         <!-- HEADER DESKTOP-->
 
         <!-- MAIN CONTENT-->
-        <div class="main-content">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @yield('content-title')
-                            @yield('content')
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @yield('content')
         <!-- END MAIN CONTENT-->
 
         <!-- END PAGE CONTAINER-->
@@ -97,6 +86,23 @@
 <!-- Main JS-->
 <script src="{{asset('js/main.js')}}"></script>
 
+<!--input file-->
+<script>
+
+
+    /* show file value after file select */
+    $('.custom-file-input').on('change',function(){
+        $(this).next('.form-control-file').addClass("selected").html($(this).val());
+    })
+
+    /* method 2 - change file input to text input after selection
+    $('.custom-file-input').on('change',function(){
+        var fileName = $(this).val();
+        $(this).next('.form-control-file').hide();
+        $(this).toggleClass('form-control custom-file-input').attr('type','text').val(fileName);
+    })
+    */
+</script>
 </body>
 
 </html>

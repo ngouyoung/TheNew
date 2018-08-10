@@ -19,6 +19,7 @@ Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', 'AdminController@index');
     Route::get('dashboard', 'AdminController@index');
+    Route::get('category', 'CategoryController@index');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

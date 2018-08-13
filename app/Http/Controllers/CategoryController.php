@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::orderBy('id','desc')->paginate(5);
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -34,7 +37,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'slug' => 'required',
+            'description' => 'required',
+        ]);
+        $categories = $request->all();
+        $categories['user_id'] = Auth::id();
+        Category::create($categories);
+
+        return back();
     }
 
     /**

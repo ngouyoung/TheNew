@@ -20,6 +20,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', 'AdminController@index');
     Route::get('dashboard', 'AdminController@index');
     Route::get('category', 'CategoryController@index');
+    Route::resource('category', 'CategoryController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

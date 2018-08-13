@@ -13,15 +13,15 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id')->unique();
             $table->string('name');
-            $table->string('description');
             $table->string('slug')->unique();
-            $table->string('image');
-            $table->integer('user_id')->unsigned();;
+            $table->string('description');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
     /**

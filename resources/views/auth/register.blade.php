@@ -1,21 +1,20 @@
 @extends('layouts.app')
-
+<link href="{{ asset('style/register.css') }}" rel="stylesheet">
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <div class="container">
+        <div class="row">
+            <div id="login-box">
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+                <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    {{ csrf_field() }}
 
+                    <div class="left">
+                        {{--Username--}}<h1 class="Register">Register</h1>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <div>
+                                {{--<input type="text" name="username" placeholder="Username" />--}}
+                                <input id="name" type="text"  name="name"
+                                       value="{{ old('name') }}" required autofocus placeholder="Username">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -24,12 +23,13 @@
                                 @endif
                             </div>
                         </div>
-
+                        {{--E-mail--}}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <div>
+                                <input id="email" type="text" name="email" value="{{ old('email') }}" required placeholder="E-mail Address" />
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                {{--<input id="email" type="email" class="form-control" name="email"--}}
+                                {{--">--}}
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -38,13 +38,12 @@
                                 @endif
                             </div>
                         </div>
+                        {{--Password--}}
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
+                            <div>
+                                <input id="password" type="password"  name="password" required
+                                       placeholder="Password">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -52,26 +51,36 @@
                                 @endif
                             </div>
                         </div>
-
+                        {{--Confirm Password               --}}
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div>
+                                <input id="password-confirm" type="password"
+                                       name="password_confirmation" required placeholder="Confirm Password">
                             </div>
                         </div>
-
+                        {{--Register               --}}
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-6 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    {{--Login With--}}
+                    <div class="right">
+
+                        <span class="loginwith">Sign in with<br />social network</span>
+                        <button class="social-signin facebook"><a style="text-decoration:none" href="{{URL::route('login/facebook')}}">Log in with facebook</a></button>
+                        <button class="social-signin twitter">Log in with​​​ Instagram</button>
+                        <button class="social-signin google">Log in with Gmail</button>
+                    </div>
+                    <div class="or">OR</div>
+                </form>
+            </div>
+
+            <div>
             </div>
         </div>
-    </div>
-</div>
+
 @endsection

@@ -26,3 +26,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+/*facebook socialite*/
+Route::get('login/facebook',['as' => 'login/facebook','uses' => 'Auth\LoginController@redirectToProvider']);
+Route::get('login/facebook/callback',['as' =>'login/facebook/callback','uses' =>  'Auth\LoginController@handleProviderCallback']);
+
+Route::get('/feedback','FeedbackController@feedback');
+
+

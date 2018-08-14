@@ -46,8 +46,8 @@
                                 <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Slug</th>
                                     <th>Description</th>
+                                    <th>Slug</th>
                                     <th>Create By</th>
                                     <th>Date Create</th>
                                     <th>User ID</th>
@@ -58,27 +58,25 @@
                                     @foreach($categories as $value)
                                         <tr>
                                             <td>
-                                                {{ $value->name }}
+                                                {!! $value->name !!}
                                             </td>
                                             <td>
-                                                {{ $value->slug }}
+                                                {!!  $value->description  !!}
                                             </td>
                                             <td>
-                                                {{ $value->description }}
+                                                {!! $value->slug !!}
                                             </td>
                                             <td>
-                                                {{ $value->user->name }}
+                                                {!!  $value->user->name  !!}
                                             </td>
                                             <td>
-                                                {{ $value->created_at }}
+                                                {!! $value->created_at  !!}
                                             </td>
                                             <td>
-                                                {{ $value->user_id }}
+                                                {!!  $value->user_id  !!}
                                             </td>
                                             <td>
-                                                <input type="submit" class="" value="View">
-                                                <input type="submit" class="" value="Edit">
-                                                <input type="submit" class="" value="Delete">
+                                                <button class="btn-sm btn-success">View</button>
                                             </td>
                                         </tr>
                                         @endforeach

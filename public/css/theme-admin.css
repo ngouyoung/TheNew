@@ -1,0 +1,58 @@
+body a{
+    color: #65c631;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.625;
+    -webkit-font-smoothing: antialiased;
+
+}
+li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+/*Logo-to-home*/
+.logo-admin{
+    height: 75px;
+    align-items: center;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    z-index: 999;
+    padding: 0 35px;
+    border-bottom: 1px solid #e2e3e5;
+    margin-bottom: 20px;
+}
+
+/*side-bar-admin*/
+.menu-sidebar{
+    border: 1px solid #222222;
+    background-color: #222222;
+    color: white;
+    height: calc(100vh);
+}
+.menu-sidebar ul{
+    list-style-type: none;
+    color: white;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 40px;
+}
+.menu-sidebar ul li a{
+    color: white;
+    font-weight: 600;
+    line-height: 3;
+}
+.menu-sidebar ul li a:hover{
+    color: #65c631;
+    text-decoration: none;
+}
+
+.Coupon-collapse ul{
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}

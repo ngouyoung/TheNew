@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-
+use App\User;
 class LoginController extends Controller
 {
     /*
@@ -52,29 +53,27 @@ class LoginController extends Controller
     /**
      * Obtain the user information from facebook.
      *
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function handleProviderCallback()
     {
-        try {
-            $user = Socialite::driver('facebook')->user();
-        } catch (Exception $e){
-            return redirect('login/facebook');
+        $userSocial = Socialite::driver('facebook')->user();
+
+//       return $userSocial->name;
+        $findUser = User::where('email',$userSocial->email)->first();
+        if ($findUser){
+            Auth::login($findUser);
+            return 'done with old';
+        }else{
+            $user = new User;
+            $user->name = $userSocial->name;
+            $user->email = $userSocial->email;
+            $user->password = bcrypt(123456);
+            $user->save();
+            Auth::login($userSocial->user);
+            return 'done with new';
         }
-        $authUser =$this->findOrCreateUser($user);
-        Auth::login($authUser,true);
-        return redirect()->route('home');
+
     }
-    private function findOrCreateUser($facebookUser){
-        $authUser = User::where('facebook_id', $facebookUser ->id)->first();
-        if($authUser){
-            return $authUser;
-        }
-        return User::create([
-            'name' => $facebookUser->name,
-            'email'=> $facebookUser->email,
-            'facebook_id' =>$facebookUser->id,
-            'avatar' => $facebookUser->avatar
-        ]);
-    }
+
 }

@@ -27,9 +27,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 /*facebook socialite*/
+//Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+//Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+//
 Route::get('login/facebook',['as' => 'login/facebook','uses' => 'Auth\LoginController@redirectToProvider']);
 Route::get('login/facebook/callback',['as' =>'login/facebook/callback','uses' =>  'Auth\LoginController@handleProviderCallback']);
 
-Route::get('/feedback','FeedbackController@feedback');
+/* feedback */
+Route::get('/feedback','FeedbackController@openFeedback');// open page url we use GET
+Route::post('/feedback','FeedbackController@sendFeedback');//put data into database we use POST
+
+
+Route::get('/test','FeedbackController@fillIn');
 
 

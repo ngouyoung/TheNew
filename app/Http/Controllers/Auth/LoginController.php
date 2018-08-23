@@ -63,17 +63,53 @@ class LoginController extends Controller
         $findUser = User::where('email',$userSocial->email)->first();
         if ($findUser){
             Auth::login($findUser);
-            return 'done with old';
+            return redirect()->route('home');
+//            return 'old user';
         }else{
             $user = new User;
             $user->name = $userSocial->name;
             $user->email = $userSocial->email;
             $user->password = bcrypt(123456);
             $user->save();
-            Auth::login($userSocial->user);
-            return 'done with new';
+            Auth::login($user);
+            return redirect()->route('home');
         }
 
+    }
+
+
+   /* login with google*/
+    public function redirectToProviderGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from facebook.
+     *
+     * @return string
+     */
+    public function handleProviderCallbackGoogle()
+    {
+
+        $userGoogle = Socialite::driver('google')->stateless()->user();
+
+//       return $userGoogle->name;
+        $findUserGoogle = User::where('email',$userGoogle->email)->first();
+        if($findUserGoogle){
+            Auth::login($findUserGoogle);
+            return redirect()->route('home');
+//            return 'Welcome To Google Login User';
+        }else{
+        $user = new User;
+        $user->name = $userGoogle->name;
+        $user->email = $userGoogle->email;
+        $user->password = bcrypt(123456789);
+        $user->save();
+        Auth::login($user);
+        return redirect()->route('home');
+
+        }
     }
 
 }

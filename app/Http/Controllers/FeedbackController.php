@@ -20,9 +20,4 @@ class FeedbackController extends Controller
         DB::table('feedback')->insert($data);
         echo 'Thanks!';
     }
-
-
-    public function fillIn(){
-        return view('insert');
-    }
 }
